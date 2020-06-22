@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: AWS Employee Service
+  profiles:
+    active: dev  
+  main:
+    banner-mode: off
+server:  port: 8090
+
+---
+# AWS DynamoDB endpoint. Spring don't have official support for dynamodb, this is community support
+#Endpoint is common for dynamodb through out the applicaitons based on region
+amazon:
+   dynamodb:
+      endpoint: http://dynamodb.us-east-1.amazonaws.com
+   aws:
+      accesskey: 
+      secretkey: 
+#Spring configuration ended
+#logging configuration
+logging:
+  level:
+    com.bhoomi: DEBUG
+    org.springframework: ERROR
+    org.hibernate.type.descriptor.sql.BasicBinder: ERROR 
+  file: logs\application.log
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+#logging configuration ended
+---
+
+
